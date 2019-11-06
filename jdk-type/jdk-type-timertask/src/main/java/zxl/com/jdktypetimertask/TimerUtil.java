@@ -1,6 +1,7 @@
 package zxl.com.jdktypetimertask;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
@@ -61,7 +62,7 @@ public class TimerUtil {
     public static void timer4() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 11);
-        calendar.set(Calendar.MINUTE, 23);
+        calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
 
         Date time = calendar.getTime();
@@ -75,9 +76,10 @@ public class TimerUtil {
 
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                System.out.println("-------设定要指定任务--------"+System.currentTimeMillis());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                System.out.println("-------设定要指定任务--------"+sdf.format(new Date()));
             }
-        }, time, 1000);// 这里设定将延时每天固定执行
+        }, time, 1000*60);// 这里设定将延时每天固定执行
         System.out.println("结束执行");
     }
 
